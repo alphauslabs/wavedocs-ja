@@ -16,6 +16,7 @@ nav:
         - "wavepro/aws.md"
         - "wavepro/dashboard.md"
         - "wavepro/repto.md"
+        - "wavepro/budget-and-forecast.md"
   - "Wave":
       - "ripple/index.md"
       - "ripple/concepts.md"
