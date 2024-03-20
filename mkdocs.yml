@@ -26,6 +26,7 @@ nav:
       - "aqua/index.md"
       - "aqua/utilization.md"
       - "aqua/risp.md"
+      - "aqua/recommendation.md"
 
 extra:
   alternate:
