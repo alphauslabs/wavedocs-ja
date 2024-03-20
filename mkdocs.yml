@@ -25,7 +25,7 @@ nav:
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
-  - "Blog": "https://labs.alphaus.cloud/blog/"
+      - "aqua/risp.md"
 
 extra:
   alternate:
