@@ -24,6 +24,7 @@ nav:
       - "Knowledgebase ↗": "https://help.alphaus.cloud/en/"
   - "Aqua":
       - "aqua/index.md"
+      - "aqua/utilization.md"
   - "Blog": "https://labs.alphaus.cloud/blog/"
 
 extra:
