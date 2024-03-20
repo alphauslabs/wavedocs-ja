@@ -17,6 +17,9 @@ nav:
         - "wavepro/dashboard.md"
         - "wavepro/repto.md"
         - "wavepro/budget-and-forecast.md"
+        - "wavepro/notification.md"
+        - "wavepro/repto-1.md"
+        - "wavepro/repto-repto.md"
   - "Wave":
       - "ripple/index.md"
       - "ripple/concepts.md"
