@@ -1,14 +1,11 @@
-# Overview
+# 公式ユーザーガイド
 
-!!! success "What's new?"
-    The public beta of our new product, [OCTO](https://octo.alphaus.cloud/en/octo), is now available!
+Wave PRO の基本的な操作方法などを説明しています。
 
-    We've been working hard on this product for the past few months, and we're really excited to share it with you. We're still under development, but we've already received great feedback from our early beta testers.
+機能の追加・変更に合わせてこのユーザーガイドはアップデートされます。
 
-    In the public beta, you'll have access to all of the features of OCTO, but there may be some bugs or limitations. We're committed to making OCTO the best it can be, so your feedback is essential.
+左のメニューから読みたい項目を選択してください。
 
-    Try it out at [https://app.alphaus.cloud/octo/](https://app.alphaus.cloud/octo/). We can't wait to hear what you think!
+Wave PRO: [https://app.alphaus.cloud/wavepro/login](https://app.alphaus.cloud/wavepro/login)
 
-Welcome to [Alphaus](https://alphaus.cloud/en/) documentation. Find user guides, developer guides, API references, tutorials, sample codes, and more.
-
----
+本ユーザーガイドで解決できない場合は wave\_cs@alphaus.cloud までお気軽にお問い合わせください。

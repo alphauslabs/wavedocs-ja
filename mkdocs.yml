@@ -8,15 +8,14 @@ theme:
   features:
     - navigation.tabs
     - navigation.sections
-  # - navigation.expand
 
 nav:
   - "WavePro":
       - "index.md"
-      - "products.md"
-      - "IAM overview": "iam.md"
-      - "Wave(Pro) ↗": "https://docs.alphaus.cloud/v/wave-eng/"
-      - "System status ↗": "https://status.alphaus.cloud/"
+      - "AWS":
+        - "wavepro/aws.md"
+        - "wavepro/dashboard.md"
+        - "wavepro/repto.md"
   - "Wave":
       - "ripple/index.md"
       - "ripple/concepts.md"
