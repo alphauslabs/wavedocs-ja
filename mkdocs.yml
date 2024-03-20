@@ -22,6 +22,11 @@ nav:
         - "wavepro/repto-repto.md"
         - "wavepro/reportfilter.md"
         - "wavepro/api.md"
+      - "Azure":
+        - "wavepro/wave-pro-for-azure.md"
+      - "SAML":
+        - "wavepro/saml.md"
+        - "wavepro/saml-subuser.md"
   - "Wave":
       - "wave/index.md"
   - "Aqua":
