@@ -20,6 +20,7 @@ nav:
         - "wavepro/notification.md"
         - "wavepro/repto-1.md"
         - "wavepro/repto-repto.md"
+        - "wavepro/reportfilter.md"
   - "Wave":
       - "ripple/index.md"
       - "ripple/concepts.md"
