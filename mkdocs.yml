@@ -21,6 +21,7 @@ nav:
         - "wavepro/repto-1.md"
         - "wavepro/repto-repto.md"
         - "wavepro/reportfilter.md"
+        - "wavepro/api.md"
   - "Wave":
       - "ripple/index.md"
       - "ripple/concepts.md"
