@@ -33,7 +33,8 @@ nav:
           - "wavepro/settings/rbac/rbac.md"
           - "wavepro/settings/rbac/about-role.md"
           - "wavepro/settings/rbac/how-to-use.md"
-        - "wavepro/settings/csvnonitsuite.md"
+      - "wavepro/csvnonitsuite.md"
+      - "wavepro/aqua.md"
   - "Wave":
       - "wave/index.md"
   - "Aqua":

@@ -81,4 +81,4 @@ Wave Proの各ページからダウンロードできるCSVは以下の通りで
 
 ### レポートフィルタ
 
-[レポートフィルタの具体的な操作はこちらを参考にしてください。](https://docs.alphaus.cloud/v/projp/wave-pro-for-aws/wave-pro-for-aws/reportfilter)
+[レポートフィルタの具体的な操作はこちらを参考にしてください。](reportfilter.md)
