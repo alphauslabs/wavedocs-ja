@@ -41,6 +41,7 @@ nav:
         - "wave/aws/index.md"
         - "wave/aws/dashboard.md"
         - "wave/aws/usage-reports.md"
+        - "wave/aws/reserved-instances.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
