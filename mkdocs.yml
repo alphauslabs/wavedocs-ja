@@ -1,0 +1,85 @@
+site_name: WavePro Documentation
+copyright: Copyright &copy; 2024 Alphaus Cloud. All rights reserved.
+
+theme:
+  name: material
+  logo: assets/alphaus.png
+  favicon: assets/alphaus.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+  # - navigation.expand
+
+nav:
+  - "General":
+      - "index.md"
+      - "products.md"
+      - "IAM overview": "iam.md"
+      - "Wave(Pro) ↗": "https://docs.alphaus.cloud/v/wave-eng/"
+      - "System status ↗": "https://status.alphaus.cloud/"
+  - "Ripple":
+      - "ripple/index.md"
+      - "ripple/concepts.md"
+      - "A primer on TrueUnblended": "ripple/trueunblended.md"
+      - "Knowledgebase ↗": "https://help.alphaus.cloud/en/"
+  - "Octo":
+      - "octo/index.md"
+      - "octo/account-registration.md"
+      - "octo/curs3payer.md"
+      - "octo/samlsso.md"
+      - "octo/costallocation.md"
+      - "octo/costgroup.md"
+      - "octo/channel-management.md"
+      - "octo/alerts-management.md"
+  - "Blue API":
+      - "blueapi/overview.md"
+      - "blueapi/authentication.md"
+      - "CLI: bluectl": "blueapi/bluectl.md"
+      - "APIs":
+          - "blueapi/apis/org.md"
+          - "blueapi/apis/iam.md"
+          - "blueapi/apis/admin.md"
+          - "blueapi/apis/cost.md"
+          - "blueapi/apis/billing.md"
+          - "blueapi/apis/operations.md"
+          - "blueapi/apis/preferences.md"
+      - "blueapi/client-sdks.md"
+  - "Guides":
+      - "guides/index.md"
+      - "Registering AWS payer accounts": "guides/aws-register-payer.md"
+      - "Enabling AWS payer API access": "guides/aws-enable-api-access.md"
+      - "guides/aws-query-costs.md"
+      - "Scheduling invoice calculations": "guides/invoice-calc-sched.md"
+      - "guides/aws-cost-mods.md"
+  - "Blog": "https://labs.alphaus.cloud/blog/"
+
+extra:
+  alternate:
+    - name: English
+      link: /docs/
+      lang: en
+    - name: 日本語
+      link: /docs-ja/
+      lang: ja
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - md_in_html
+  - footnotes
