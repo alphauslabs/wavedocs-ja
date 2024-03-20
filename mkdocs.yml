@@ -56,10 +56,10 @@ nav:
 extra:
   alternate:
     - name: English
-      link: /docs/
+      link: /wavedocs/
       lang: en
     - name: 日本語
-      link: /docs-ja/
+      link: /wavedocs-ja/
       lang: ja
 
 markdown_extensions:
