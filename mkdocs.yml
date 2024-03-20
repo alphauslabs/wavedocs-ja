@@ -5,6 +5,8 @@ theme:
   name: material
   logo: assets/alphaus.png
   favicon: assets/alphaus.png
+  font:
+    text: BIZ UDMincho
   features:
     - navigation.tabs
     - navigation.sections
@@ -43,6 +45,8 @@ nav:
         - "wave/aws/usage-reports.md"
         - "wave/aws/reserved-instances.md"
         - "wave/aws/savings-plans.md"
+        - "wave/aws/invoice.md"
+        - "wave/aws/budget.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
