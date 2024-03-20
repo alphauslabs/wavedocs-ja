@@ -27,6 +27,13 @@ nav:
       - "SAML":
         - "wavepro/saml.md"
         - "wavepro/saml-subuser.md"
+      - "Settings":
+        - "wavepro/settings/password.md"
+        - "RBAC":
+          - "wavepro/settings/rbac/rbac.md"
+          - "wavepro/settings/rbac/about-role.md"
+          - "wavepro/settings/rbac/how-to-use.md"
+        - "wavepro/settings/csvnonitsuite.md"
   - "Wave":
       - "wave/index.md"
   - "Aqua":
