@@ -37,6 +37,10 @@ nav:
       - "wavepro/aqua.md"
   - "Wave":
       - "wave/index.md"
+      - "AWS":
+        - "wave/aws/index.md"
+        - "wave/aws/dashboard.md"
+        - "wave/aws/usage-reports.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
