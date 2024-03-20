@@ -28,6 +28,7 @@ nav:
       - "aqua/risp.md"
       - "aqua/recommendation.md"
       - "aqua/rightsizing.md"
+      - "aqua/scheduling.md"
 
 extra:
   alternate:
