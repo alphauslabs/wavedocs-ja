@@ -47,6 +47,9 @@ nav:
         - "wave/aws/savings-plans.md"
         - "wave/aws/invoice.md"
         - "wave/aws/budget.md"
+        - "wave/aws/fee.md"
+        - "wave/aws/tag.md"
+        - "wave/aws/reportcsv.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
