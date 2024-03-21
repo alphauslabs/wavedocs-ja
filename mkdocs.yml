@@ -50,6 +50,17 @@ nav:
         - "wave/aws/fee.md"
         - "wave/aws/tag.md"
         - "wave/aws/reportcsv.md"
+      - "Azure":
+        - "wave/azure/index.md"
+        - "wave/azure/dashboard.md"
+        - "wave/azure/reoport.md"
+        - "wave/azure/reservedinstance.md"
+        - "wave/azure/invoice.md"
+      - "GCP":
+        - "wave/gcp/index.md"
+        - "wave/gcp/dashboard.md"
+        - "wave/gcp/report.md"
+        - "wave/gcp/invoice.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
