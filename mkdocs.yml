@@ -61,6 +61,9 @@ nav:
         - "wave/gcp/dashboard.md"
         - "wave/gcp/report.md"
         - "wave/gcp/invoice.md"
+      - "共通項目":
+        - "wave/settings.md"
+        - "wave/rbac.md"
   - "Aqua":
       - "aqua/index.md"
       - "aqua/utilization.md"
