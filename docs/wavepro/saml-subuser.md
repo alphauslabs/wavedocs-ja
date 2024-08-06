@@ -4,7 +4,7 @@
 
 今回は Okta を例に説明していますが、Okta, Auth0, Google Workspace などのSAML 2.0 ベースIdP (ID プロバイダ) に対応しています。
 
-SP (サービスプロバイダー) とは、ここではWavePROを指します。
+SP (サービスプロバイダー) とは、ここではWave PROを指します。
 
 ### 1. OktaのAdminアカウントにログインする
 
