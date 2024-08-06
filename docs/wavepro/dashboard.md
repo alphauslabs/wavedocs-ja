@@ -9,7 +9,7 @@
 
 ## 2. グラフ
 
-ダッシュボードのグラフは WavePRO に含まれている全AWSアカウントの合計値です。
+ダッシュボードのグラフは Wave PRO に含まれている全AWSアカウントの合計値です。
 
 ![](../assets/wavepro/Banners_and_Alerts_と_Wave_Pro.png)
 
