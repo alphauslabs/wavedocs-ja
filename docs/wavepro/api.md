@@ -16,7 +16,7 @@ Wave APIを利用することでWave PRO上で表示されている各数値デ�
 
 これらのトークンを、API への呼び出しで Authorization: Bearer {token} HTTP ヘッダーを使用して使用します。
 
-Wave(Pro) アクセス トークンは Wave(Pro) エンドポイントでのみ有効です。
+Wave / Wave PROアクセス トークンは Wave / Wave PRO エンドポイントでのみ有効です。
 
 ```
 https://login.alphaus.cloud/access_token
