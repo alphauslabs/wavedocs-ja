@@ -68,7 +68,7 @@ nav:
       - "aqua/risp.md"
       - "aqua/recommendation.md"
       # - "aqua/rightsizing.md"
-      - "aqua/scheduling.md"
+      # - "aqua/scheduling.md"
   - "API":
       - "apiref/index.md"
       - "apiref/prerequest.md"
