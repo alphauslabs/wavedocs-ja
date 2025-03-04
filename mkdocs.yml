@@ -69,10 +69,13 @@ nav:
       - "aqua/recommendation.md"
       # - "aqua/rightsizing.md"
       # - "aqua/scheduling.md"
-  - "API":
-      - "apiref/index.md"
-      - "apiref/prerequest.md"
-      - "apiref/report.md"
+  - "Blue API":
+      - "blueapi/overview.md"
+      - "blueapi/authentication.md"
+  # - "API":
+  #     - "apiref/index.md"
+  #     - "apiref/prerequest.md"
+  #     - "apiref/report.md"
 
 extra:
   alternate:
