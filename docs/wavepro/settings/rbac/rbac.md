@@ -24,7 +24,8 @@ RBACはユーザー、サービス、ロール、権限によって定義され�
 
 RBACが適用されるまとまりを指します。以下のリストが現在 RBACでサポートされているサービスです。
 
-| Wave  | `wave`  |
+| WAVE  | `wave`  |
 | ----- | ------- |
-| Users | `users` |
+| USERS | `users` |
 | RBAC  | `rbac`  |
+| AQUA  | `aqua`  |
