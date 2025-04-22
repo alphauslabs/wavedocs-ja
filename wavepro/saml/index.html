@@ -1,0 +1,2553 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../wave-pro-for-azure/">
+      
+      
+        <link rel="next" href="../saml-subuser/">
+      
+      
+      <link rel="icon" href="../../assets/alphaus.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>SAMLベースのフェデレーション認証 - WavePro Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#saml" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WavePro Documentation" class="md-header__button md-logo" aria-label="WavePro Documentation" data-md-component="logo">
+      
+  <img src="../../assets/alphaus.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WavePro Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SAMLベースのフェデレーション認証
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/wavedocs/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/wavedocs-ja/" hreflang="ja" class="md-select__link">
+              日本語
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+  WavePro
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../wave/" class="md-tabs__link">
+          
+  
+  
+  Wave
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../aqua/" class="md-tabs__link">
+          
+  
+  
+  Aqua
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blueapi/overview/" class="md-tabs__link">
+          
+  
+  
+  Blue API
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WavePro Documentation" class="md-nav__button md-logo" aria-label="WavePro Documentation" data-md-component="logo">
+      
+  <img src="../../assets/alphaus.png" alt="logo">
+
+    </a>
+    WavePro Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    WavePro
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            WavePro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    公式ユーザーガイド
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    AWS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WavePro for AWS 概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../budget-and-forecast/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート- コスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート - 予算通知設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repto-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート - 分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repto-repto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート-レポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reportfilter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポートフィルター
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API アクセストークンの発行
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wave-pro-for-azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wave Pro for Azure 概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    SAML
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            SAML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    SAMLベースのフェデレーション認証
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    SAMLベースのフェデレーション認証
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      機能概要
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定手順
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="設定手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oktaadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. OktaのAdminアカウントにログインする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-applicationscreate-app-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. [Applications]を選択し、[Create App Integration] をクリック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-saml-20-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SAML 2.0 を選択し Next をクリック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-saml-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create SAML Integrationに必要事項を記入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-saml-signing-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SAML Signing Certificatesを取得する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-wave-pro-idp" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Wave PRO にIdP設定を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-profile-attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Profile attribute を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-okta" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Okta でユーザー設定をする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. アプリケーションにユーザーをアサインする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. ユーザー情報をアップデートする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-attributeswaveproidpid-waveproprofiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. AttributesのwaveproIdpId とwaveproProfilesをアップデートする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. ログインの確認
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../saml-subuser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    サブユーザーの設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Settings
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Settings
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/password/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    パスワードの変更
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_2" id="__nav_1_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RBAC
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            RBAC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/rbac/rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    サブユーザーの管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/rbac/about-role/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    権限について
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/rbac/how-to-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    操作方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../csvnonitsuite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CSVの形式について
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aqua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Aqua
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wave
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wave
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wave 公式ユーザーガイド
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AWS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            AWS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wave for AWS 概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/usage-reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/reserved-instances/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    リザーブドインスタンス
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/savings-plans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Savings Plans
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/invoice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ご利用明細
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予算・通知設定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/fee/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    その他明細情報の確認
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/tag/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    タグ機能の有効化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/aws/reportcsv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポートとCSVの比較
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/azure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wave for Azure 概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/azure/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/azure/reoport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/azure/reservedinstance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    リザーブドインスタンス
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/azure/invoice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ご利用明細
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GCP
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            GCP
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/gcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wave for GCP 概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/gcp/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/gcp/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    レポート
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/gcp/invoice/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ご利用明細
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    共通項目
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            共通項目
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    各種設定・変更
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wave/rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ユーザーの管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Aqua
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Aqua
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aqua/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ダッシュボード
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aqua/utilization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    インスタンス使用状況
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aqua/risp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    インスタンス予約管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aqua/recommendation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RI/SP レコメンデーション
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Blue API
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Blue API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blueapi/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blueapi/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      機能概要
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定手順
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="設定手順">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-oktaadmin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. OktaのAdminアカウントにログインする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-applicationscreate-app-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. [Applications]を選択し、[Create App Integration] をクリック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-saml-20-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SAML 2.0 を選択し Next をクリック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-saml-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create SAML Integrationに必要事項を記入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-saml-signing-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. SAML Signing Certificatesを取得する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-wave-pro-idp" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Wave PRO にIdP設定を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-profile-attribute" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Profile attribute を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-okta" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Okta でユーザー設定をする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. アプリケーションにユーザーをアサインする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. ユーザー情報をアップデートする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-attributeswaveproidpid-waveproprofiles" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. AttributesのwaveproIdpId とwaveproProfilesをアップデートする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. ログインの確認
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="saml">SAMLベースのフェデレーション認証</h1>
+<h2 id="_1">機能概要</h2>
+<p>SAMLベースのフェデレーション認証がサポートされ、Wave PROへログインする際にSSO（Single Sign on）を使ってログインをすることができるようになりました。</p>
+<p>この機能により従来のパスワード認証によるアクセスに比べ、管理者側での集権的な管理が可能になり、セキュリティを高めることができます。</p>
+<h2 id="_2">設定手順</h2>
+<p>今回は Okta を例に説明していますが、Okta, Auth0, Google Workspace などのSAML 2.0 ベースIdP (ID プロバイダ) に対応しています。</p>
+<p>SP (サービスプロバイダー) とは、ここではWave PROを指します。</p>
+<p>今回はWave PRO のルートユーザーでログインする場合の設定を記載しています。サブユーザーを使用する場合は<a href="../saml-subuser/">こちら</a>のドキュメントをご覧ください。</p>
+<h3 id="1-oktaadmin">1. OktaのAdminアカウントにログインする</h3>
+<p><img alt="" src="https://lh6.googleusercontent.com/Uy5ljABV91COgxWZX72869XMHvRx_BjaX8dzjhqHjPSg-wPC45apSs4_14ALmyP31AOK31b0z148StseO_tDkMi5T9rYJOIUCWSboR_PsMWIR7kzeRMHQrUQL7PbXx3LPK0e-cKAvsEs2SekI6ii02E" /></p>
+<h3 id="2-applicationscreate-app-integration">2. [Applications]を選択し、[Create App Integration] をクリック</h3>
+<p><img alt="" src="https://lh3.googleusercontent.com/jaJQzadOmX6dMr4m4oHwKGAlJF2DOLN_q2ksbcQVevtpl52FLt8xe2tPrTv6oPQKgsLbYUY4beEHV89YdzuV7_qfCeTQZOlWYnQBVlvODonDxvrXVO8hvEgt-LQBpFD-kFSk-1kBTfb03fK0aNehnu8" /></p>
+<h3 id="3-saml-20-next">3. SAML 2.0 を選択し Next をクリック</h3>
+<p><img alt="" src="https://lh3.googleusercontent.com/aPLMh1l89It_dkBVAml8zu63zKoEasJlVI-ifK_WPQpdC0_K2ZoLqL9m71S_ZE1lWiiVHlUALDry8amfwIS6Uej2RcpGCNekA9auLdu9wDS9wmJr51NXshfMFt6kpJsfLpAiJ9JthiDk79sNEOMzhQ4" /></p>
+<h3 id="4-create-saml-integration">4. Create SAML Integrationに必要事項を記入</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Single sign-on URL: https://login.alphaus.cloud/wavepro/saml
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Audience URI (SP Entity ID): https://login.alphaus.cloud/wavepro/saml
+</code></pre></div>
+<p><img alt="" src="https://lh3.googleusercontent.com/pGyaM9S_tlS1-7B2GUU-Kxt0mXE4YHuzyuiQthwCu_drHadjye2VDj_o2Kf2shfsCRGwQqMZUZ7nMkGK8aEJ8WG0l_xNjyIOSXXh0mAFwJb8cDBQOh0ciqVuS3t761DXUHtfY3UsauWDrvIYELTSgeo" /></p>
+<p><img alt="" src="https://lh5.googleusercontent.com/LCnuI-NA33Q--iX51iq2ORs2ryQmUHbxuUEAxtV4Kbds0RQVnnfgIokyYitVuyFyeyuWmTtPw0AwVytLYqCCVlaasJIAEVV6VQ2hyZOiI07B5nbVd6jte9eohITLSdfZDl2WRLZfAJmB_hrEDTZIoko" /></p>
+<p>Attribute statements:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Name: https://app.alphaus.cloud/wavepro/SAML/Attributes/IDPID
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Name format: leave default (Unspecified)
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Value: user.waveproIdpId
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>Name: https://app.alphaus.cloud/wavepro/SAML/Attributes/Profiles
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>Name format: leave default (Unspecified)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>Value: user.waveproProfiles
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Name: https://app.alphaus.cloud/wavepro/SAML/Attributes/SessionName
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>Name format: leave default (Unspecified)
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>Value: user.email
+</code></pre></div>
+<p><img alt="" src="https://lh3.googleusercontent.com/qhDu-6cdCKo4AQ2p0BrYMRjg2ae9jFa4DWZiXSWJTiAkg0wCkA-LobtXJS1x0C6lW20uVDcUh8PTngvcttyKIPEHl7peq1zndM2u6uQAAaxxcRx1pTkEMff-OhkC1kaXnvcJFTjK8ImPOx-PgAFxd-s" /></p>
+<p><img alt="" src="https://lh6.googleusercontent.com/d-in9nNHWuj4SG9xn_kEy5cglN7_REkhWSyhMdqHr1rx2ZSjTjd9McDrvhcmwmecZ1Zsk9yqyutYHTmOjuz89TFnGlGgjDLovsTtHbj9wtjqceqz_MDFvT7M1sfHmRfaGNYB2wM98SohMKvt5wQ0ciA" /></p>
+<h3 id="5-saml-signing-certificates">5. SAML Signing Certificatesを取得する</h3>
+<p>Applications &gt; 作成したアプリケーション（今回はWavePROSSOIdp）＞Sign Onタブ</p>
+<p>ページ下部のSAML Signing Certificates のActionsタブから View IdP metadata を選択</p>
+<p><img alt="" src="https://lh6.googleusercontent.com/AIyRKFoaGkkhKoNkY6sHoXZ8tN50pGN1OUfwhCsXn8RP5nqBZLH6eDrQSP9bk8ZGrrhoSmpZi4tCRqUfQAYAYiySBk-CHi8cB3RWjOwNeQkxCb59x4CFm-S3QHgNFD4fLqvcJxFeeqtKwcEFrM_ZeYk" /></p>
+<p>別画面で開いた情報を.xml の拡張子で保存する</p>
+<p><img alt="" src="https://lh5.googleusercontent.com/unJSV7shN_8BGeYxJlK7IWJMySqTxLFLqGp4nxxNxsi9Yn1YUSnMvNnJp-5AlVeVnLxCgfzj26jhwXRKVJAvr1jWmrxCaFuPREUH5u3QCUaF4OWTQNdv8-GcPo1WR0GtPESFS5eDsm36hiXNAB5Lrg8" /></p>
+<h3 id="6-wave-pro-idp">6. Wave PRO にIdP設定を追加する</h3>
+<p>環境設定 &gt; IdP設定 &gt; +IdPを追加 をクリック</p>
+<p><img alt="" src="https://lh3.googleusercontent.com/ZST7PNu3CR-DPOczIGocezO94wy_LVswDWxgj2Cj5KIlcHLxE0YwNUTR2t4cGiswC659knlRdfz1sCb8XwsJc9uyHlTEf8JXU5uQXs5XZQ8ahzq9DUIP-X1x-YNvGqP0DRTOIIt67Z-7zCz30y_Z3o0" /></p>
+<p>さきほどダウンロードしたファイルをアップロード</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/JHjMHJFQrwHWE6mgv9YdNEsQZGKRXdDGA5-pEm11tbb8mJxH5DdgSLw_oL-yfmaF5khGiWnDMlpgGSziYlRjPQhhIHi-GdiEBTeCskZkJTgvK9jrn6trjZQJUJ6Tzo2NS-NqmpLV3YCKf2n3NI_kgpk" /></p>
+<h3 id="7-profile-attribute">7. Profile attribute を追加する</h3>
+<p>メニューのDirectory &gt; Profile Editorで &gt; User (default) をクリック</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/uIpGMmDH5cni7TgnmvHGLxL1AgWLiqVPlozliPwEsOX8f2stN9_RIvkJXlYiOnR33lhunW4y1QH2_zI4u8eEfRKhWy5PYmum3Hj1B__zgll4_Goz-KszvtJMjKNiIqnUCMeyskzFFMqvqSg-rurPRP4" /></p>
+<p>Add Attribute から以下のattributeを追加する</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Display name: waveproIdpId（他の名前でも可）
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Variable name: waveproIdpId
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Display name: waveproProfiles（他の名前でも可）
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>Variable name: waveproProfiles
+</code></pre></div>
+<p><img alt="" src="https://lh3.googleusercontent.com/y-SWx60-0BvdefeEb_B773WxJYZ-rE_Ln37TH9ypn4S_StoYYFgldjef_EClCfMKhajFheWRxCGHNM8Vr7QiPNQcs3LmQqOGPDjmFyhlgb8ygChmpMaWrlKllcl5bswBhbjfvzrd29wq83Y1EyQblvE" /></p>
+<p><img alt="" src="https://lh5.googleusercontent.com/uuWGuuMPo5Xdce89Pk5fkZHU0SJa6QnAfBdaTZ4_8oaWtMhDD9ix0AFA-vMciPgF1D5Gyph6siGuKVE43xWU5DLhF3N1WCQLMyDSJoZCgX2CyD90S3naPjEtCAN2NvigC21MC8uO54BRSwv3apXgCJM" /></p>
+<h3 id="8-okta">8. Okta でユーザー設定をする</h3>
+<p>Directory &gt; People &gt; Add person よりユーザーを追加する</p>
+<p><img alt="" src="https://lh6.googleusercontent.com/3Q6TNn4fgMnbHJrUhLtN89bQgIE_rgcKt8WyTcRH1yao0o3z68DsptRJ__OVZ8bWPxAAjDfM7BJYsUEZgdKuFnknWcSZ23qmPPIsEmkNhppOai2LMO0HbTPgbJCvLtbBbjHj9Wh1weexKCbxTp5SZTA" /></p>
+<h3 id="9">9. アプリケーションにユーザーをアサインする</h3>
+<p>Applications &gt; Wave PROのアプリケーション &gt; Assignments &gt; Assignボタンより先ほど作成したアカウントを追加する</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/MvYzVFZOL-zWPFU0cqilmEByKD6HVcrtcvJOJD7h0xe7u74FCPAoVPqCguX5nEXjlskaXuKyqGaIspxtJnAKmPy1cjlrp0BM7Xn4eTVncRn7_vh2wAKE7jlxwxaHkyAOofcFJyCxhBlPNA97NP0LD50" /></p>
+<h3 id="10">10. ユーザー情報をアップデートする</h3>
+<p>Directory &gt; People &gt; ユーザー選択 &gt; Profile &gt; Edit をクリック</p>
+<p><img alt="" src="https://lh5.googleusercontent.com/GerlCqUuUXA0jVqDpDwV-E8FxoZKiPBpc_PhNTdkvqE73reMwUBRTVi5tdWneZi3y2Ym7OIk7TYzVrvq2GTUq7lqjraPDg7uddtOdEvdD5zYamLNMfBs7csWi8aYSAWp3-cCI7ROoLD276mNAXVNbYs" /></p>
+<h3 id="11-attributeswaveproidpid-waveproprofiles">11. AttributesのwaveproIdpId とwaveproProfilesをアップデートする</h3>
+<p><img alt="" src="https://lh4.googleusercontent.com/86XXtZOhtH3-3h6B4hO050Ygq3Bh9FNMdwQhQBZQQTFP3huRNzq_M3xPRjhs-8fN_WpFlCFXCQYkbex5Do9Rrq5Ss59DbaBNOGpHP5ZjIK3KgwuuIYHoSy6zyDwuZTaI582hQ_aVif_YWR42yvK7lJ8" /></p>
+<p><strong>waveproIdpId</strong> = Wave PRO の環境設定 &gt; IdP設定で確認できるID</p>
+<p><img alt="" src="https://lh5.googleusercontent.com/GCbr90nmGhG6FCOt57uJbLOUHafHIAXGdj4VUEZQhIxCXD-4jjrpDLjPSOitzkKjnbMf8AVlOPsoZvqm15iQI7ZPCR7jaTMXjjLy_Wp1eAae0p-v4N25r0Ex5_YSBLIoX22ls3uTQ-Y2X59O0RPJ9ow" /></p>
+<p><strong>waveproProfiles</strong> = [Wave ID]:wave/[RBACで設定しているwave権限],user/[RBACで設定しているuser権限],role/[RBACで設定しているrole権限]</p>
+<p>▼ Wave IDの確認画面</p>
+<p><img alt="" src="https://lh6.googleusercontent.com/3Ino1wv5bH2r5QFHg-ATIiWl22C6_Z9T_eLXeMojqODcb01L1Qrjw8pR2x3MDl-3lElMawe7INNyC8YmPkPoNTHZIXTyl-A-ogofPOUIWIFdwzlyqzLCUBCl6m6X1hd9c-dFpHgRoYpFb1AxLmFnM7M" />\</p>
+<p>▼ [RBACで設定しているwave権限],[RBACで設定しているuser権限],[RBACで設定しているrole権限]の確認画面</p>
+<p>Wave PROの環境設定 &gt; サブユーザーの管理 &gt; サブユーザー管理画面を開く で遷移した先で作成済みのAdmin権限のWAVE、RBAC、USERの内容を記載する</p>
+<p><img alt="" src="https://lh4.googleusercontent.com/1B9hy2UWJtDMTq_4UyR1s_bXx2DKuy5TCzxRnoJ-WUZIVVI70ihcRqB2rhXIIlD2fR2AHh-up2qLFtFITBF7zm4KbRL9KQngDOhH7EG4FymD03_wIONxc1ecke1bAZFZyIx2jVvmrC4MUryzJn3Z7k4" /></p>
+<h3 id="12">12. ログインの確認</h3>
+<p>設定は以上です。</p>
+<p>メニューのApplications &gt; 作成したWave PROアプリケーション &gt; General &gt; ページ下部のEmbed Link を新規のウィンドウにコピーペーストしWave PROにアクセスできれば正しく設定できています。</p>
+<p><img alt="" src="https://lh3.googleusercontent.com/riKg7t6X7VyIv0AzCXHREYxdq5HtbcRqf1Zm2cjKYWuAi3xw8D4j1vYeZPy0QVHG_a97wTLJwPRbvfMyOoYiyoN05Zo8KHe1DVN2zEOfWGRB6-nPNLGosMLoCX9IY3ullCnKLTwowXcyYQHHoPo9tDY" /></p>
+<p><img alt="" src="../../assets/wavepro/Untitled_png.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 Alphaus Cloud. All rights reserved.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
