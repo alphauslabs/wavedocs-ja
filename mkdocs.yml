@@ -36,9 +36,13 @@ nav:
       - "wavepro/csvnonitsuite.md"
       - "wavepro/aqua.md"
       - "スマート予約割引サービス":
-        - "wavepro/gcguide.md"
-        - "wavepro/faqs.md"
-        - "wavepro/glossary.md"
+        - "wavepro/gc-feature-explainer.md"
+        - "wavepro/gc-full-guide.md"
+        - "wavepro/gc-quick-guide.md"
+        - "wavepro/gc-billing-and-fee-guide.md"
+        - "wavepro/gc-faqs.md"
+        - "wavepro/gc-status-and-screen-reference.md"
+        - "wavepro/gc-glossary.md"
   - "Wave":
       - "wave/index.md"
       - "AWS":
@@ -55,7 +59,7 @@ nav:
       - "Azure":
         - "wave/azure/index.md"
         - "wave/azure/dashboard.md"
-        - "wave/azure/reoport.md"
+        - "wave/azure/report.md"
         - "wave/azure/reservedinstance.md"
         - "wave/azure/invoice.md"
       - "GCP":
